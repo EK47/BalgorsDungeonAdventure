@@ -1,0 +1,7 @@
+# Gitignore file
+*.a
+*.o
+*.so
+.vscode
+/bin
+/build
