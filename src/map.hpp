@@ -1,13 +1,30 @@
 #ifndef BDA_map_hpp_
 #define BDA_map_hpp_
 
+// The tile is a standard unit on the map
+struct Tile
+{
+   bool seen;
+   int tileChar = 0x0023;
+   Tile() : seen( false ) {}
+};
+
 class Map {
 public:
-    Map();
-    ~Map();
+  Map( int width, int height );
+  ~Map();
+
+  void render();
+
+  // Gives the tile at any point.
+  int tileAt( int x, int y );
+
+  int width;
+  int height;
+
 private:
-    // This stores the unicode character decimal for each tile on the map
-    int Tiles[MAP_SIZE];
+  // This stores the unicode character decimal for each environment tile on the map
+  Tile *mapTiles;
 };
 
 #endif

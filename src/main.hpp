@@ -1,8 +1,6 @@
 #ifndef BDA_main_hpp_
 #define BDA_main_hpp_
 
-#define MAP_SIZE 4800
-
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -13,6 +11,7 @@ class Actor;
 #include "ai.hpp"
 #include "actor.hpp"
 #include "map.hpp"
+#include "gui.hpp"
 #include "engine.hpp"
 
 

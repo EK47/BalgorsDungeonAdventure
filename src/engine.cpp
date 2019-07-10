@@ -1,14 +1,25 @@
 #include "main.hpp"
 
+/*
+ * ENGINE FILE
+ *
+ * The engine is the core of the game. There is generally only one running, but it is still a class because I wanted it to be.
+ *
+ */
+
 Engine::Engine() {
-    // Opens the terminal
+  // Opens the terminal
 	terminal_open();
 	// Default foreground color is white
 	terminal_color( color_from_name("white") );
-    // Creates an actor that will act as the player of the game. 0x0040 is Unicode for '@'
-	hero = std::make_shared<Actor>( 0, 0, 0x0040, "Balgor", "red" );
-    // This creates the AI for the hero. All actors have no AI by default.
-    hero -> ai = std::make_unique<PlayerAI>();
+	// This is the map.
+	map = std::make_shared<Map>( 120, 40 );
+	// This is the GUI.
+	gui = std::make_shared<Gui>();
+  // Creates an actor that will act as the player of the game. 0x0040 is Unicode for '@'
+	hero = std::make_shared<Actor>( 1, 1, 0x0040, "Balgor", "red" );
+  // This creates the AI for the hero. All actors have no AI by default.
+  hero -> ai = std::make_unique<PlayerAI>();
 }
 
 Engine::~Engine() {
@@ -17,27 +28,20 @@ Engine::~Engine() {
 
 bool Engine::update() {
 
-        lastKeypress = terminal_read();
+	lastKeypress = terminal_read();
 
-        hero -> update( hero );
+	hero -> update( hero );
 
-        return true;
+	return true;
 }
 
 bool Engine::render() {
 
-    // This is the divide between the GUI and the map
-    for( int x = 0; x < 120; ++x )
-    {
-        // 0x0335 is Unicode for '-'
-        terminal_put( x, 39, 0x0335 );
-    }
+	map -> render();
 
-    // If you put the print statements before the movement check, then the message follows the character with delay
-	terminal_print( hero -> x + 2, hero -> y, (hero -> name).data() );
-	terminal_print( hero -> x + 2 + (hero -> name).length(), hero -> y, ( std::string("\'s eyes are [color=") + hero -> color + std::string("]glowing[/color].") ).c_str() );
+	gui -> render();
 
-    hero -> render();
+	hero -> render();
 
-    return true;
+	return true;
 }
