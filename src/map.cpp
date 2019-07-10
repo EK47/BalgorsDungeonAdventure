@@ -18,6 +18,7 @@ Map::Map( int width, int height ) : width( width ), height( height )
     for( int y = 1; y < height - 1; ++y )
     {                                 // '·'
       mapTiles[x + y * 119].tileChar = 0x00B7;
+      mapTiles[x + y * 119].walkable = true;
     }
   }
 }
@@ -42,4 +43,9 @@ void Map::render()
 int Map::tileAt( int x, int y )
 {
   return mapTiles[x + y * 119].tileChar;
+}
+
+int Map::walkableAt( int x, int y )
+{
+  return mapTiles[x + y * 119].walkable;
 }

@@ -20,4 +20,6 @@ public:
 private:
 };
 
+extern Engine engine;
+
 #endif // BDA_engine_hpp_

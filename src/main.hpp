@@ -6,6 +6,7 @@
 #include <vector>
 
 class Actor;
+class Map;
 
 #include "../include/BearLibTerminal.h"
 #include "ai.hpp"
@@ -13,6 +14,5 @@ class Actor;
 #include "map.hpp"
 #include "gui.hpp"
 #include "engine.hpp"
-
 
 #endif // BDA_main_hpp_

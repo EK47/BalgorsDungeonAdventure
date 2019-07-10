@@ -5,8 +5,9 @@
 struct Tile
 {
    bool seen;
+   bool walkable;
    int tileChar = 0x0023;
-   Tile() : seen( false ) {}
+   Tile() : seen( false ), walkable( false ) {}
 };
 
 class Map {
@@ -18,6 +19,7 @@ public:
 
   // Gives the tile at any point.
   int tileAt( int x, int y );
+  int walkableAt( int x, int y );
 
   int width;
   int height;
