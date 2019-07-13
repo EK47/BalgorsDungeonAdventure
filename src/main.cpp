@@ -12,14 +12,15 @@ int lastKeypress { TK_INPUT_NONE };
 
 Engine engine;
 
-int main() {
+int main()
+{
 	while( lastKeypress != TK_ESCAPE ) {
 		// This clears the terminal before calculations for the next frame are done
 		terminal_clear();
 		engine.update();
 		engine.render();
 		terminal_refresh();
-	}
+}
 
 	terminal_close();
 

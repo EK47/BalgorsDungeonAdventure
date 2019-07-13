@@ -5,7 +5,8 @@
 
 extern int lastKeypress;
 
-class AI {
+class AI
+{
 public:
 	AI() { ; }
 	~AI() { ; }
@@ -16,7 +17,8 @@ private:
 
 // This is the PlayerAI class. Only one single PlayerAI should exist.
 
-class PlayerAI : public AI {
+class PlayerAI : public AI
+{
 public:
 	PlayerAI();
 	~PlayerAI();
@@ -27,7 +29,8 @@ private:
 
 // All monsters are based on this AI.
 
-class MonsterAI : public AI {
+class MonsterAI : public AI
+{
 public:
 	MonsterAI();
 	~MonsterAI();

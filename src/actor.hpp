@@ -3,14 +3,15 @@
 
 extern int lastKeypress;
 
-class Actor {
+class Actor
+{
 public:
-	Actor( int x, int y, char glyph, std::string name, std::string color );
+	Actor( int x, int y, char glyph, std::string name, std::string fcolor );
 	~Actor();
 
 	int x, y;
 	char glyph;
-	std::string name, color;
+	std::string name, fcolor, bcolor;
 
 	bool update( std::shared_ptr<Actor> actor );
 	bool render();
@@ -20,7 +21,7 @@ public:
 	// This exists solely for organization in the ActorManager system.
 	enum ActorType { Enemy, Item, Corpse, NONE };
 	ActorType actorType { NONE };
-	
+
 private:
 };
 
@@ -30,7 +31,8 @@ private:
  * that all actors reside within.
  */
 
-class ActorManager {
+class ActorManager
+{
 public:
 	// A list of the lists of actor types.
 	ActorManager();

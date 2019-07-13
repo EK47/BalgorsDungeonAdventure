@@ -1,16 +1,11 @@
 #ifndef BDA_map_hpp_
 #define BDA_map_hpp_
 
-// The tile is a standard unit on the map
-struct Tile
-{
-   bool seen;
-   bool walkable;
-   int tileChar = 0x0023;
-   Tile() : seen( false ), walkable( false ) {}
-};
+extern Tile dungeonWallOne;
+extern Tile dungeonFloorOne;
 
-class Map {
+class Map
+{
 public:
   Map( int width, int height );
   ~Map();
@@ -26,7 +21,7 @@ public:
 
 private:
   // This stores the unicode character decimal for each environment tile on the map
-  Tile *mapTiles;
+  std::vector<Tile> mapTiles;
 };
 
-#endif
+#endif // BDA_map_hpp_

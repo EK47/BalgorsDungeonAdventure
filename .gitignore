@@ -3,5 +3,4 @@
 *.o
 *.so
 .vscode
-/bin
-/build
+main

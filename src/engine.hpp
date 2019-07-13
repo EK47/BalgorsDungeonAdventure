@@ -5,7 +5,8 @@
 
 extern int lastKeypress;
 
-class Engine {
+class Engine
+{
 public:
   Engine();
   ~Engine();

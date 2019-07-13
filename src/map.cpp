@@ -9,23 +9,24 @@
 
 Map::Map( int width, int height ) : width( width ), height( height )
 {
-  // This is an array of the tiles on the map.
-  mapTiles = new Tile[width * height];
+  {
+    std::vector<Tile> temp( width * height, Tile( false, false, 0x0023, "darker green", "darkest grey" ) );
+    std::swap( temp, mapTiles );
+  }
 
   // TEMPORARY: This fills the rectangle with middle dots.
   for( int x = 1; x < width - 1; ++x )
   {
     for( int y = 1; y < height - 1; ++y )
-    {                                 // '·'
-      mapTiles[x + y * 119].tileChar = 0x00B7;
-      mapTiles[x + y * 119].walkable = true;
+    {
+      mapTiles[x + y * width] = dungeonFloorOne;
     }
   }
 }
 
 Map::~Map()
 {
-  delete [] mapTiles;
+
 }
 
 void Map::render()
@@ -35,17 +36,19 @@ void Map::render()
   {
     for( int y = 0; y < height; ++y )
     {
-      terminal_put( x, y, mapTiles[x + y * 119].tileChar );
+      terminal_color( color_from_name(mapTiles[x + y * width].fcolor.c_str()) );
+      terminal_bkcolor( color_from_name(mapTiles[x + y * width].bcolor.c_str()) );
+      terminal_put( x, y, mapTiles[x + y * width].glyph );
     }
   }
 }
 
 int Map::tileAt( int x, int y )
 {
-  return mapTiles[x + y * 119].tileChar;
+  return mapTiles[x + y * width].glyph;
 }
 
 int Map::walkableAt( int x, int y )
 {
-  return mapTiles[x + y * 119].walkable;
+  return mapTiles[x + y * width].walkable;
 }

@@ -1,14 +1,16 @@
 #ifndef BDA_main_hpp_
 #define BDA_main_hpp_
 
+#include <cmath>
 #include <iostream>
 #include <memory>
 #include <vector>
 
 class Actor;
-class Map;
 
 #include "../include/BearLibTerminal.h"
+#include "bresenham.hpp"
+#include "tiles.hpp"
 #include "ai.hpp"
 #include "actor.hpp"
 #include "map.hpp"
